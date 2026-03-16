@@ -1,79 +1,158 @@
 # LLM Chat Backend
 
-This project is a basic chat backend application using a Large Language Model (LLM).
+A basic **LLM powered chat backend** built using **Node.js**, **Express.js**, and **Google Gemini API**.  
+This application allows users to send messages to an AI model and receive intelligent responses while maintaining chat history.
 
-## Technologies Used
+---
+
+## 🚀 Features
+
+- REST API for chatting with AI
+- Chat history support for each user
+- Integration with Google Gemini LLM
+- Simple backend architecture
+- JSON based API communication
+
+---
+
+## 🛠 Technologies Used
 
 - Node.js
 - Express.js
-- Google Gemini API
+- Gemini API
+- dotenv
+- REST API
 
-## Project Structure
+---
 
-index.js → Main server file  
-aichat.js → AI model integration  
-chatHistory → Stores conversation history
+## 📁 Project Structure
+LLM-chat-backend
+│
+├── index.js # Main server file
+├── aichat.js # Gemini AI integration
+├── package.json
+├── package-lock.json
+├── README.md
+├── .gitignore
+└── .env # API Key (not uploaded to GitHub)
 
-## How it Works
 
-1. Client sends message to /chat API
-2. Server stores chat history for each user
-3. Message + history is sent to Gemini AI
-4. AI generates response
-5. Response returned to user
+---
 
-## API Endpoint
+## ⚙️ Installation
 
-POST /chat
+### 1 Clone the repository
+git clone https://github.com/Avinashkumarranjan/LLM-chat-backend.git
 
-Request Body
 
+### 2 Navigate to project
+cd LLM-chat-backend
+
+
+### 3 Install dependencies
+npm install
+
+
+### 4 Create `.env` file
+GEMINI_API_KEY=your_api_key_here
+
+
+### 5 Start the server
+node index.js
+
+
+Server will run on:
+http://localhost:3000
+
+
+---
+
+## 📡 API Endpoint
+
+### POST `/chat`
+
+Send message to AI.
+
+### Request Body
 {
 "id":"user1",
 "msg":"Hello AI"
 }
 
-Response
 
-AI generated text
+### Response
 
-## Installation
+---
 
-Clone the repository
+## 🔄 How it Works
 
-git clone https://github.com/username/llm-chat-backend.git
+1. User sends a message to the `/chat` endpoint.
+2. Server stores the user's chat history.
+3. Message + history is sent to the Gemini AI model.
+4. AI generates a response.
+5. Response is returned to the user.
 
-Install dependencies
+---
 
-npm install
+## 🧠 Chat History Logic
 
-Run the server
-
-node index.js
-
-Server runs on:
-
-http://localhost:3000
-
-## Example Request (Postman)
-
-POST http://localhost:3000/chat
-
-Body
-
-{
-"id":"123",
-"msg":"What is AI?"
+Chat history is stored in memory using a **key-value object**.
+chatHistory = {
+"user1": [
+{ role: "user", message: "Hello" },
+{ role: "model", message: "Hi there!" }
+]
 }
 
-## Features
 
-- Chat history memory
-- Gemini AI integration
-- REST API backend
+This allows the AI to understand conversation context.
 
-## Future Improvements
+---
 
-- Database integration
-- Authentication
-- Frontend UI
+## 🧪 Testing with Postman
+
+Use **POST request**
+POST http://localhost:3000/chat
+
+
+Body → JSON
+{
+"id":"123",
+"msg":"What is Artificial Intelligence?"
+}
+
+
+---
+
+## 🔒 Environment Variables
+
+Create a `.env` file and add:
+GEMINI_API_KEY=your_api_key_here
+
+
+This keeps your API key secure.
+
+---
+
+## 📌 Future Improvements
+
+- Database integration (MongoDB)
+- User authentication
+- Frontend chat UI
+- Conversation storage
+- Rate limiting
+
+---
+
+## 👨‍💻 Author
+
+Avinash Kumar
+
+GitHub:  
+https://github.com/Avinashkumarranjan
+
+---
+
+## ⭐ If you like this project
+
+Give it a **star on GitHub** ⭐
